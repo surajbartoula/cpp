@@ -6,31 +6,42 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:17:58 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/12 16:46:25 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:26:22 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cctype>
+
+void	toUpper(char **argv)
+{
+	int i;
+	
+	i = 0;
+	while ((*argv)[i])
+	{
+		if ((*argv)[i] >= 'a' && (*argv)[i] <= 'z')
+			(*argv)[i] -= 32;
+		i++;
+	}
+}
 
 int	 main(int argc, char **argv)
 {
-	int i = 1;
-	int j = 0;
+	int i;
 
 	if (argc == 1) {
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
 	}
-	while (i < argc)
+	else
 	{
-		while (argv[i][j])
+		i = 1;
+		while (argv[i])
 		{
-			std::cout << (char) std::toupper(argv[i][j]);
-			j++;
+			toUpper(&argv[i]);
+			std::cout << argv[i];
+			i++;
 		}
-		j = 0;
-		i++;
+		std::cout << "\n";
 	}
-	return 0;
+	return (0);
 }
