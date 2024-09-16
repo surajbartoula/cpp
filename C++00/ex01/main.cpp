@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:22:34 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/13 18:29:57 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/09/16 23:31:25 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int main()
 	std::string input;
 	int			index;
 
+	std::cout << "\001\033[1;34m\002\nWelcome to your new contact manager.\001\033[0;0m\002"<< std::endl;
 	while (1)
 	{
+		std::cout << "\nType ADD, SEARCH or EXIT:" << std::endl;
 		std::cout << "\001\033[1;34m\002PhoneBook> \001\033[0;0m\002";
 		std::getline(std::cin, input);
 		if (input == "ADD")
@@ -60,7 +62,7 @@ int main()
 			std::cout << "Darkest Secret: ";
 			std::getline(std::cin, data[4]);
 			phonebook.add_contact(data);
-			std::cout << "\001\033[0;32m\002Contact Added Successfully!\001\033[0;32m\002\n" << std::endl;
+			std::cout << "\001\033[0;32m\002Contact Added Successfully!\001\033[0;32m\002" << std::endl;
 		}
 		else if (input == "SEARCH")
 		{
@@ -82,6 +84,6 @@ int main()
 		else if (input == "EXIT")
 			break;
 		else
-			std::cout << "Input command\n" << std::endl;
+			std::cout << "Please provide right command" << std::endl;
 	}
 }

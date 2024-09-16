@@ -6,7 +6,7 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/13 16:10:25 by sbartoul          #+#    #+#              #
-#    Updated: 2024/09/13 23:06:38 by sbartoul         ###   ########.fr        #
+#    Updated: 2024/09/16 17:23:31 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,4 +37,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
