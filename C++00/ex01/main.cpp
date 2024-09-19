@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:22:34 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/17 15:06:20 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:03:38 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int is_empty(std::string& number)
 
 	while (i < number.length())
 	{
-		if (number[i] != ' ' && number[i] != '\n')
+		if (number[i] != ' ' && number[i] != '\n' && number[i] != '\t')
 			return 0;
 		i++;
 	}
@@ -71,12 +71,16 @@ int main()
 		std::cout << "\nType ADD, SEARCH or EXIT:" << std::endl;
 		std::cout << "\001\033[1;34m\002PhoneBook> \001\033[0;0m\002";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			break;
 		if (input == "ADD")
 		{
 			std::cout << "\001\033[1;34m\002\nEnter Contact Information\001\033[0;0m\002" << std::endl;
 			do {
 				std::cout << "First Name: ";
 				std::getline(std::cin, data[0]);
+				if (std::cin.eof())
+					break;
 				if (!is_empty(data[0]))
 					break;
 				std::cout << "\033[31mField cannot be empty!\033[0m" << std::endl;
@@ -84,6 +88,8 @@ int main()
 			do {
 				std::cout << "Last Name: ";
 				std::getline(std::cin, data[1]);
+				if (std::cin.eof())
+					break;
 				if (!is_empty(data[1]))
 					break;
 				std::cout << "\033[31mField cannot be empty!\033[0m" << std::endl;
@@ -91,6 +97,8 @@ int main()
 			do {
 				std::cout << "NickName: ";
 				std::getline(std::cin, data[2]);
+				if (std::cin.eof())
+					break;
 				if (!is_empty(data[2]))
 					break;
 				std::cout << "\033[31mField cannot be empty!\033[0m" << std::endl;
@@ -98,6 +106,8 @@ int main()
 			do {
 				std::cout << "Phone Number: ";
 				std::getline(std::cin, data[3]);
+				if (std::cin.eof())
+					break;
 				if (is_valid_number(data[3]))
 					break;
 				std::cout << "Please input a valid number" << std::endl;
@@ -105,6 +115,8 @@ int main()
 			do {
 				std::cout << "Darkest Secret: ";
 				std::getline(std::cin, data[4]);
+				if (std::cin.eof())
+					break;
 				if (!is_empty(data[4]))
 					break;
 				std::cout << "\033[31mField cannot be empty!\033[0m" << std::endl;
@@ -114,12 +126,18 @@ int main()
 		}
 		else if (input == "SEARCH")
 		{
+			if (input == "SEARCH" && phonebook.get_size() == 0)
+			{
+				std::cout << "\033[31m\nNo data inserted. Please add some Contact first.\033[0m" << std::endl;
+				phonebook.display_phonebook();
+				continue;
+			}
 			phonebook.display_phonebook();
 			std::cout << "\nInsert Index: ";
 			std::cin >> index;
 			if (std::cin.fail() || index < 0 || index >= phonebook.get_size())
 			{
-				std::cout << "Invalid Index!\n" << std::endl;
+				std::cout << "Invalid Index!" << std::endl;
 				std::cin.clear();
 				std::getline(std::cin, input);
 				continue;

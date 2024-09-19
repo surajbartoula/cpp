@@ -6,13 +6,14 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 11:16:23 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/13 23:04:44 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/09/19 21:55:41 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 #define b_bright "\001\033[1;34m\002"
+#define b_bright_a "\001\033[0;0m\002"
 
 void	print_name(std::string str)
 {
@@ -54,15 +55,15 @@ void	PhoneBook::add_contact(std::string data[5])
 
 void	PhoneBook::display_contact(int i) const
 {
-	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright << std::endl;
-	std::cout << b_bright << "|  Contact information for specified index  |" << b_bright << std::endl;
-	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright << std::endl;
+	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright_a << std::endl;
+	std::cout << b_bright << "|  Contact information for specified index  |" << b_bright_a << std::endl;
+	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright_a << std::endl;
 	
-	std::cout << "First Name: " << this->contacts[i].get_firstname() << std::endl;
-	std::cout << "Last Name: " << this->contacts[i].get_lastname() << std::endl;
-	std::cout << "Nickname: " << this->contacts[i].get_nickname() << std::endl;
-	std::cout << "Number: " << this->contacts[i].get_number() << std::endl;
-	std::cout << "Darkest Secret: " << this->contacts[i].get_secret() << std::endl;
+	std::cout << b_bright << "First Name: " << this->contacts[i].get_firstname() << b_bright_a << std::endl;
+	std::cout << b_bright << "Last Name: " << this->contacts[i].get_lastname() << b_bright_a << std::endl;
+	std::cout << b_bright << "Nickname: " << this->contacts[i].get_nickname() << b_bright_a << std::endl;
+	std::cout << b_bright << "Number: " << this->contacts[i].get_number() << b_bright_a << std::endl;
+	std::cout << b_bright << "Darkest Secret: " << this->contacts[i].get_secret() << b_bright_a << std::endl;
 }
 
 void	PhoneBook::display_phonebook() const
@@ -70,21 +71,21 @@ void	PhoneBook::display_phonebook() const
 	int	i;
 	
 	i = 0;
-	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright << std::endl;
-	std::cout << b_bright << "|     index|first name| last name|  nickname|" << b_bright << std::endl;
-	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright << std::endl;
+	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright_a << std::endl;
+	std::cout << b_bright << "|     index|first name| last name|  nickname|" << b_bright_a << std::endl;
+	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright_a << std::endl;
 	while (i < this->size)
 	{
-		std::cout << b_bright << "|         " << b_bright;
+		std::cout << b_bright << "|         " << b_bright_a;
 		std::cout << i;
-		std::cout << b_bright << "|" << b_bright;
+		std::cout << b_bright << "|" << b_bright_a;
 		print_name(this->contacts[i].get_firstname());
-		std::cout << b_bright << "|" << b_bright;
+		std::cout << b_bright << "|" << b_bright_a;
 		print_name(this->contacts[i].get_lastname());
-		std::cout << b_bright << "|" << b_bright;
+		std::cout << b_bright << "|" << b_bright_a;
 		print_name(this->contacts[i].get_nickname());
-		std::cout << b_bright << "|" << b_bright << std::endl;
+		std::cout << b_bright << "|" << b_bright_a << std::endl;
 		i++;
 	}
-	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright << std::endl;
+	std::cout << b_bright << "+----------+----------+----------+----------+" << b_bright_a << std::endl;
 }
