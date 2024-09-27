@@ -5,31 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 15:56:16 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/13 16:02:14 by sbartoul         ###   ########.fr       */
+/*   Created: 2024/09/25 14:00:46 by sbartoul          #+#    #+#             */
+/*   Updated: 2024/09/25 17:45:25 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
+#include <iostream>
 #include <string>
 
 class Contact {
 private:
-	std::string firstname;
-	std::string lastname;
-	std::string nickname;
-	std::string secret;
-	std::string number;
+	std::string _fname;
+	std::string _lname;
+	std::string _nname;
+	std::string _pnumber;
+	std::string _dsecret;
 public:
-	const std::string& get_firstname(void) const;
-	const std::string& get_lastname(void) const;
-	const std::string& get_nickname(void) const;
-	const std::string& get_secret(void) const;
-	const std::string& get_number(void) const;
-	void				set_firstname(std::string firstname);
-	void				set_lastname(std::string lastname);
-	void				set_nickname(std::string nickname);
-	void				set_secret(std::string secret);
-	void				set_number(std::string number);
+	Contact(void);
+	~Contact(void);
+	std::string get_fname(void) const;
+	std::string get_lname(void) const;
+	std::string get_nname(void) const;
+	std::string get_pnumber(void) const;
+	std::string get_dsecret(void) const;\
+	void		set_fname(std::string str);
+	void		set_lname(std::string str);
+	void		set_nname(std::string str);
+	void		set_pnumber(std::string str);
+	void		set_dsecret(std::string str);
 };
+
+#endif

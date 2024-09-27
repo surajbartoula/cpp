@@ -5,59 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 16:02:55 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/16 22:21:41 by sbartoul         ###   ########.fr       */
+/*   Created: 2024/09/25 14:06:57 by sbartoul          #+#    #+#             */
+/*   Updated: 2024/09/25 17:45:58 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-const std::string& Contact::get_firstname() const
+Contact::Contact(void) {}
+
+Contact::~Contact(void) {}
+
+std::string Contact::get_fname(void) const
 {
-	return (this->firstname);
+	return (this->_fname);
 }
 
-const std::string& Contact::get_lastname() const
+std::string Contact::get_lname(void) const
 {
-	return (this->lastname);
+	return (this->_lname);
 }
 
-const std::string& Contact::get_nickname() const
+std::string Contact::get_nname(void) const
 {
-	return (this->nickname);
+	return (this->_nname);
 }
 
-const std::string& Contact::get_secret() const
+std::string Contact::get_pnumber(void) const
 {
-	return (this->secret);
+	return (this->_pnumber);
 }
 
-const std::string& Contact::get_number() const
+std::string Contact::get_dsecret(void) const
 {
-	return (this->number);
+	return (this->_dsecret);
 }
 
-void	Contact::set_firstname(std::string firstname)
+void Contact::set_fname(std::string str)
 {
-	this->firstname = firstname;
+	this->_fname = str;
 }
 
-void	Contact::set_lastname(std::string lastname)
+void Contact::set_lname(std::string str)
 {
-	this->lastname = lastname;
+	this->_lname = str;
 }
 
-void	Contact::set_nickname(std::string nickname)
+void Contact::set_nname(std::string str)
 {
-	this->nickname = nickname;
+	this->_nname = str;
 }
 
-void	Contact::set_secret(std::string secret)
+void Contact::set_pnumber(std::string str)
 {
-	this->secret = secret;
+	this->_pnumber = str;
 }
 
-void	Contact::set_number(std::string number)
+void Contact::set_dsecret(std::string str)
 {
-	this->number = number;
+	this->_dsecret = str;
 }

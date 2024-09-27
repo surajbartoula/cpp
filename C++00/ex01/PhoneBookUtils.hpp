@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBookUtils.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 13:38:45 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/25 22:22:41 by sbartoul         ###   ########.fr       */
+/*   Created: 2024/09/25 14:39:14 by sbartoul          #+#    #+#             */
+/*   Updated: 2024/09/25 14:41:59 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
+#ifndef PHONEBOOKUTILS_HPP
+# define PHONEBOOKUTILS_HPP
 
-# define PHONEBOOK_HPP
-
+#include <iostream>
+#include <iomanip>
 #include "Contact.hpp"
-#include "PhoneBookUtils.hpp"
 
-class PhoneBook
-{
-private: 
-	Contact _contacts[8];
-	int		_index;
-public:
-	PhoneBook(void);
-	~PhoneBook(void);
-	void	add(void);
-	void	search(void);
-	void	print(Contact contact);
-	
-	//Getter
-	Contact get_contact(int index);
+std::string add_spaces(int n);
+std::string fix_width(std::string str, long unsigned max);
 
-};
+int	display_phonebook(Contact contacts[8]);
 
 #endif

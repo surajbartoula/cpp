@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/13 16:10:25 by sbartoul          #+#    #+#              #
-#    Updated: 2024/09/16 17:23:31 by sbartoul         ###   ########.fr        #
+#    Created: 2024/09/25 15:19:58 by sbartoul          #+#    #+#              #
+#    Updated: 2024/09/25 15:20:41 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
-SRCS = PhoneBook.cpp Contact.cpp main.cpp
+SRCS = PhoneBook.cpp Contact.cpp PhoneBookUtils.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

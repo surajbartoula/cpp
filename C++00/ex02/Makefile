@@ -5,20 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/12 14:11:38 by sbartoul          #+#    #+#              #
-#    Updated: 2024/09/23 14:04:02 by sbartoul         ###   ########.fr        #
+#    Created: 2024/09/19 12:48:30 by sbartoul          #+#    #+#              #
+#    Updated: 2024/09/19 12:52:25 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = bankjob
 
-SRC = megaphone.cpp
+SRCS = Account.cpp tests.cpp
 
-OBJS = $(SRC:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+RM = rm -f
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 22:30:32 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/19 10:21:02 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:43:20 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void Account::displayAccountsInfos()
 	std::cout << "accounts:" << _nbAccounts << ";";
 	std::cout << "total:" << _totalAmount << ";";
 	std::cout << "deposits:" << _totalNbDeposits << ";";
-	std::cout << "withdrawls:" << _totalNbWithdrawals << std::endl;
+	std::cout << "withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
 Account::Account(int initial_deposit)
@@ -119,16 +119,16 @@ bool Account::makeWithdrawal(int withdrawal)
 	std::cout << "p_amount:" << this->_amount << ";";
 	if (this->_amount - withdrawal < 0)
 	{
-		std::cout << "withdrawl:" << "refused" << std::endl;
+		std::cout << "withdrawal:" << "refused" << std::endl;
 		return (false);
 	}
-	std::cout << "withdrawl:" <<withdrawal << ";";
+	std::cout << "withdrawal:" <<withdrawal << ";";
 	this->_amount -= withdrawal;
 	this->_nbWithdrawals++;
 	_totalAmount -= withdrawal;
 	_totalNbWithdrawals++;
 	std::cout << "amount:" << this->_amount << ";";
-	std::cout << "nb_withdrawls:" << this->_nbWithdrawals << std::endl;
+	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 	return (true);
 }
 
@@ -143,5 +143,5 @@ void Account::displayStatus() const
 	std::cout << "index:" << this->_accountIndex << ";";
 	std::cout << "amount:" << this->_amount << ";";
 	std::cout << "deposits:" << this->_nbDeposits << ";";
-	std::cout << "withdrawls:" << this->_nbWithdrawals << std::endl;
+	std::cout << "withdrawals:" << this->_nbWithdrawals << std::endl;
 }
