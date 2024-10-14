@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 17:48:41 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/29 19:16:49 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/10/14 20:17:53 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int main(void) {
 	for (int i = 0; i < size; i++) {
 		horde[i].announce();
 	}
-	delete [] horde;
+	delete[] horde;
 }
