@@ -1,0 +1,41 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/15 21:16:33 by sbartoul          #+#    #+#              #
+#    Updated: 2024/10/16 14:43:36 by sbartoul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = str_replace
+
+RM = rm -f
+
+SRC = main.cpp
+
+OBJS = $(SRC:.cpp=.o)
+
+CC = c++
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+all: $(NAME)
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
+
+clean:
+	@$(RM) $(OBJS)
+
+fclean: clean
+	@$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
