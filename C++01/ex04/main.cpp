@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 21:17:09 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/10/16 15:23:05 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:44:13 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@ int main(int argc, char **argv)
 {
 	if (argc != 4)
 	{
-		std::cerr << "Invalid arguments!" << std::endl;
+		std::cerr << "Invalid arguments! Usage: ./str_replace fileName wordtoreplace word" << std::endl;
 		return (EXIT_FAILURE);
 	}
-	const std::string file = argv[1];
+	const std::string fileName = argv[1];
 	const std::string str1 = argv[2];
 	const std::string str2 = argv[3];
 
-	if (file.length() == 0)
+	if (fileName.length() == 0)
 	{
 		std::cerr << "Invalid filename" << std::endl;
 		return (EXIT_FAILURE);
 	}
 	if (str1.length() == 0)
 	{
-		std::cerr << "First string to replace with cannot be empty." << std::endl;
+		std::cerr << "Please provide something to replace with." << std::endl;
+		return (EXIT_FAILURE);
 	}
 	if (str1 == str2)
 	{
@@ -41,7 +42,7 @@ int main(int argc, char **argv)
 	}
 	std::string contents;
 	char c;
-	std::ifstream inStream(file.c_str(), std::ifstream::in); //c_str (C styled str as the constructor of std::ifstream expects it)
+	std::ifstream inStream(fileName.c_str(), std::ifstream::in); //c_str (C styled str as the constructor of std::ifstream expects it)
 	//ifstream is a class from the <fstream> to open, read and process file sequentially.
 	//in for read only operations.
 	if (!inStream.good())
@@ -59,17 +60,18 @@ int main(int argc, char **argv)
 	inStream.close();
 	if (contents.length() == 0)
 	{
-		std::ofstream outStream((file + ".replace").c_str(), std::ofstream::out | std::ofstream::trunc);
+		std::ofstream outStream((fileName + ".replace").c_str(), std::ofstream::out | std::ofstream::trunc);
 		outStream.close();
 		return (EXIT_FAILURE);
 	}
+	//Search for occurance if not found return a value indicating "not found"
 	while (contents.find(str1) != std::string::npos)
 	{
 		std::string before = contents.substr(0, contents.find(str1));
 		std::string after = contents.substr(contents.find(str1) + str1.length(), contents.length());
 		contents = before + str2 + after;
 	}
-	std::ofstream outStream((file + ".replace").c_str(), std::ofstream::out | std::ofstream::trunc);
+	std::ofstream outStream((fileName + ".replace").c_str(), std::ofstream::out | std::ofstream::trunc);
 	if (!outStream.good())
 	{
 		std::cerr << "Could not open file for writing" << std::endl;

@@ -6,11 +6,16 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 17:49:10 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/09/29 19:16:07 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/10/17 23:16:10 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_HPP
+
+#define ZOMBIE_HPP
+
 #include <iostream>
+#include <string>
 
 class Zombie {
 	private:
@@ -25,4 +30,6 @@ class Zombie {
 
 Zombie	*newZombie(std::string name);
 void	randomChump(std::string name);
+Zombie	*zombieHorde(int N, std::string name);
 
+#endif
