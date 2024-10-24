@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 21:53:23 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/10/21 11:37:10 by sbartoul         ###   ########.fr       */
+/*   Created: 2024/10/23 17:45:12 by sbartoul          #+#    #+#             */
+/*   Updated: 2024/10/23 22:37:48 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef POINT_HPP
+#define POINT_HPP
+
 #include "Fixed.hpp"
-#include <iostream>
 
-int main(void) {
-	Fixed a; //Default constructor called.
-	Fixed b(a); //Copy constructor called.
-	Fixed c; //Default constructor called.
+class Point {
+public:
+	Point(void);
+	Point(const float x, const float y);
+	Point(const Point &old);
+	Point &operator=(const Point &old);
+	~Point(void);
+	bool operator==(const Point &rhs) const;
 
-	c = b; //Copy assignment operator called.
-	b.setRawBits(12);
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
-}
+	const Fixed& getX(void) const;
+	const Fixed& getY(void) const;
+private:
+	const Fixed x;
+	const Fixed y;
+};
+
+bool bsp(const Point a, const Point b, const Point c, const Point point);
+
+#endif
