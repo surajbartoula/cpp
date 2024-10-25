@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:44:37 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/10/23 17:46:43 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/10/24 23:11:30 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ public:
 
 private:
 	int _rawBits;
-	bool _neg;
 	static const int _fracBits;
-	static unsigned int pow(unsigned int num, unsigned int pow);
-	static float abs(float num);
 };
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
