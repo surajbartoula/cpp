@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:41:27 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/10/24 23:09:05 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:23:09 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ bool Fixed::operator!=(const Fixed &rhs) const {
 
 //post increment
 Fixed Fixed::operator++(int) {
-	Fixed old(*this);
-	++(*this);
+	Fixed old(*this); //Point to the old value
+	++(*this); //Use pre-increment to increase the value.
 	return (old);
 }
 
