@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:41:17 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/10/24 22:45:19 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/10/26 11:20:58 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ public:
 	bool operator==(const Fixed &rhs) const;
 	bool operator!=(const Fixed &rhs) const;
 
-	Fixed &operator++();
-	Fixed operator++(int);
+	Fixed &operator++(); //prefix
+	//Takes an int parameter, but the parameter is unused. It's just a way for the compiler to distinguish postfix from prefix.  
+	Fixed operator++(int); //postfix
 
 	Fixed &operator--();
 	Fixed operator--(int);
