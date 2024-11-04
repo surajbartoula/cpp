@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 19:04:07 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/01 21:26:59 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:39:32 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ FragTrap::FragTrap(const FragTrap &old) : ClapTrap(old) {
 FragTrap &FragTrap::operator=(const FragTrap &rhs)
 {
 	if (this != &rhs) {
-		ClapTrap::operator=(rhs);
+		this->_name = rhs._name;
 		this->_damage = rhs._damage;
 		this->_energy = rhs._energy;
 		this->_hit = rhs._hit;

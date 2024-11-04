@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 22:23:22 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/02 20:44:21 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:21:04 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main() {
 	diamond.attack("Brian");
 	diamond.guardGate();     //ScavTrap's special function.
 	diamond.highFivesGuys(); //FragTrap's special function.
+	diamond.beRepaired(1);
+	diamond.takeDamage(1);
 	diamond.whoAmI();		 //Diamond's own special function.
 
 	return (0);

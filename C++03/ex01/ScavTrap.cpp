@@ -6,11 +6,10 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 21:17:08 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/04 11:20:06 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:49:56 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(void) : ClapTrap() {
@@ -21,7 +20,7 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
 }
 
 ScavTrap::ScavTrap(const ScavTrap &old) : ClapTrap(old) {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ScavTrap Copy constructor called" << std::endl;
 	this->_hit = old._hit;
 	this->_damage = old._damage;
 	this->_energy = old._energy;
@@ -42,10 +41,10 @@ ScavTrap::~ScavTrap(void) {
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
 	std::cout << "ScavTrap copy assignment constructor called" << std::endl;
 	if (this != &rhs) {
-		ClapTrap::operator=(rhs);  // Call the base class assignment operator
 		this->_damage = rhs._damage;
 		this->_energy = rhs._energy;
 		this->_hit = rhs._hit;
+		this->_name = rhs._name;
 	}
 	return (*this);
 }
@@ -71,3 +70,8 @@ void ScavTrap::attack(const std::string &target) {
 //When an object of a derived class (like ScavTrap) is destroyed, it may rely on resources or functionality inherited 
 //from its base class (like ClapTrap). If the base class were destroyed first, the derived class would lose access to 
 //these resources, potentially causing undefined behavior if the derived class still needs to perform any cleanup specific to itself.
+
+//In C++, proper construction and destruction chaining refers to how constructors and destructors of base and derived classes
+//are called during the creation and destruction of objects. When you create an object of a derived class, the constructor of the base
+//class is called first, and when the object is destroyed, the destructor of the derived class is called first, followed by the destructor
+//of the base class. This ensures that the object is fully initialized before it's used and cleaned up properly when it goes out of scope.

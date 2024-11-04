@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 21:17:08 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/01 21:25:32 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:40:15 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ScavTrap::~ScavTrap(void) {
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
 	std::cout << "ScavTrap copy assignment constructor called" << std::endl;
 	if (this != &rhs) {
-		ClapTrap::operator=(rhs);  // Call the base class assignment operator
+		this->_name = rhs._name;
 		this->_damage = rhs._damage;
 		this->_energy = rhs._energy;
 		this->_hit = rhs._hit;
