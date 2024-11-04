@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:19:17 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/10/28 17:46:37 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:07:49 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 class ClapTrap {
 private:
 	std::string _name;
-	unsigned int _hit;
-	unsigned int _energy;
-	unsigned int _damage;
+	unsigned int _hit; //ClapTrap health.
+	unsigned int _energy; //Required to perfom to attack and repair. Each attack cost 1 energy point. Each repair cost 1 energy point.
+	unsigned int _damage; //Every damage amount reduces equal amount of hit point.
 public:
 	ClapTrap(void);
 	ClapTrap(const std::string& name);

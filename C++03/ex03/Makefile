@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/28 17:42:58 by sbartoul          #+#    #+#              #
-#    Updated: 2024/11/01 22:59:43 by sbartoul         ###   ########.fr        #
+#    Created: 2024/11/01 22:22:13 by sbartoul          #+#    #+#              #
+#    Updated: 2024/11/02 20:37:26 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = claptrap
+NAME = diamondtrap
 
 RM = rm -f
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

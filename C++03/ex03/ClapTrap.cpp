@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 11:19:21 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/04 11:00:53 by sbartoul         ###   ########.fr       */
+/*   Created: 2024/11/01 22:22:34 by sbartoul          #+#    #+#             */
+/*   Updated: 2024/11/04 11:30:12 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("default"), _hit(10), _energy(10), _damage(0) {
+ClapTrap::ClapTrap(void) : _name("default"), _hit(100), _energy(50), _damage(20) {
 	std::cout << "ClaTrap default constructor called" << std::endl;
 }
 

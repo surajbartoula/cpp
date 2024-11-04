@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 21:17:08 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/04 11:20:06 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/01 21:25:32 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap() {
 	std::cout << "ScavTrap default constructor called" << std::endl;
-	this->_hit= 100;
+	this->_hit = 100;
 	this->_damage = 20;
 	this->_energy = 50;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &old) : ClapTrap(old) {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ScavTrap Copy constructor called" << std::endl;
 	this->_hit = old._hit;
 	this->_damage = old._damage;
 	this->_energy = old._energy;
@@ -51,15 +51,15 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &rhs) {
 }
 
 void ScavTrap::guardGate(void) {
-	std::cout << "ScavTrap " << _name << " is now in gateKeeper mode" << std::endl;
+	std::cout << "ScavTrap " << this->_name << " is now in gateKeeper mode" << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target) {
 	if (_hit > 0 && _energy > 0) {
-		std::cout << "ScavTrap " << _name << " attacks " << target << " causing " << _damage << " points of damage!" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " attacks " << target << " causing " << _damage << " points of damage!" << std::endl;
 		_energy--;
 	} else {
-		std::cout << "ScavTrap " << _name << " has no energy or hit points to attack!" << std::endl;
+		std::cout << "ScavTrap " << this->_name << " has no energy or hit points to attack!" << std::endl;
 	}
 }
 

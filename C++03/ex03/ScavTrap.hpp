@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 21:17:02 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/01 11:42:36 by sbartoul         ###   ########.fr       */
+/*   Created: 2024/11/01 22:23:43 by sbartoul          #+#    #+#             */
+/*   Updated: 2024/11/02 18:04:27 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <string>
 
-class ScavTrap: public ClapTrap {
+class ScavTrap: virtual public ClapTrap {
 public:
 	ScavTrap(void);
 	ScavTrap(const std::string& name);
