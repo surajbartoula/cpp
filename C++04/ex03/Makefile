@@ -6,13 +6,13 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 13:35:01 by sbartoul          #+#    #+#              #
-#    Updated: 2024/11/07 13:35:05 by sbartoul         ###   ########.fr        #
+#    Updated: 2024/11/09 11:43:37 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = abstract
 
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

@@ -6,25 +6,25 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:58:02 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/08 18:05:27 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:10:26 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MateriaSouce.hpp"
+#include "MateriaSource.hpp"
 
-MateriaSouce::MateriaSouce(void) : _materiaIdx(0) {
+MateriaSource::MateriaSource(void) : _materiaIdx(0) {
 	for (size_t i = 0; i < 4; i++)
 		_learnedMateria[i] = NULL;
 }
 
-MateriaSouce::MateriaSouce(const MateriaSouce &old) : _materiaIdx(old._materiaIdx) {
-	for (size_t i = 0; i < 4;; i++) {
+MateriaSource::MateriaSource(const MateriaSource &old) : _materiaIdx(old._materiaIdx) {
+	for (size_t i = 0; i < 4; i++) {
 		delete _learnedMateria[i];
 		_learnedMateria[i] = old._learnedMateria[i];
 	}
 }
 
-MateriaSouce &MateriaSouce::operator=(const MateriaSouce &rhs) {
+MateriaSource &MateriaSource::operator=(const MateriaSource &rhs) {
 	if (this == &rhs)
 		return (*this);
 	_materiaIdx = rhs._materiaIdx;
@@ -35,13 +35,13 @@ MateriaSouce &MateriaSouce::operator=(const MateriaSouce &rhs) {
 	return (*this);
 }
 
-MateriaSouce::~MateriaSouce(void) {
+MateriaSource::~MateriaSource(void) {
 	for (size_t i = 0; i < 4; i++) {
 		delete _learnedMateria[i];
 	}
 }
 
-void MateriaSouce::learnMateria(AMateria *materia) {
+void MateriaSource::learnMateria(AMateria *materia) {
 	if (_materiaIdx < 4) {
 		delete _learnedMateria[_materiaIdx];
 		_learnedMateria[_materiaIdx] = materia;
@@ -58,7 +58,7 @@ void MateriaSouce::learnMateria(AMateria *materia) {
 AMateria *MateriaSource::createMateria(const std::string &type) {
 	for (size_t i = 0; i < 4; i++) {
 		if (_learnedMateria[i]->getType() == type)
-			return (_learnedMateria[i]->clone);
+			return (_learnedMateria[i]->clone());
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 19:17:37 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/08 19:36:26 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:04:15 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-	if (idx >= && idx < 4 && _equipped[idx] == true)
+	if (idx >= 0 && idx < 4 && _equipped[idx] == true)
 		_inventory[idx]->use(target);
 }

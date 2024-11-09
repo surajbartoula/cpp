@@ -6,12 +6,15 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:08:15 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/07 19:11:42 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/08 21:07:55 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 #define ICHARACTER_HPP
+
+#include "AMateria.hpp"
+#include <string>
 
 class AMateria;
 
