@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 19:13:44 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/08 19:37:20 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:39:58 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,7 @@ public:
 };
 
 #endif
+
+//When you refer to a concrete class Character, it means a class named Character that is 
+//fully defined and can be used to create objects. This class would implement all of its functions,
+//including any that it inherits from abstract base classes, if applicable.

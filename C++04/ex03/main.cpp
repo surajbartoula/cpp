@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:35:16 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/09 15:52:33 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/11 14:55:27 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,27 @@ int main() {
 	IMateriaSource *src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	src->learnMateria(new Ice());
 	ICharacter *me = new Character("me");
-	ICharacter *mark = new Character("mark");
 	AMateria *tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	mark->equip(new Ice());
-	mark->equip(new Cure());
-	mark->equip(new Cure());
-	mark->equip(new Cure());
-	mark->equip(new Cure());
-	Ice *ice = new Ice();
-	mark->equip(ice);
-	delete ice;
-	mark->use(3, *mark);
-	mark->equip(new Ice());
-	mark->use(3, *mark);
+
 	ICharacter *bob = new Character("bob");
+
 	me->use(0, *bob);
 	me->use(1, *bob);
+
 	delete bob;
 	delete me;
-	delete mark;
 	delete src;
 
 	return (0);
 }
+
+//Dynamic dispatch
+//How It Works: When you call a virtual function through a base class pointer or reference, C++ uses a
+//mechanism called the virtual table (vtable) to look up and call the correct overridden function at runtime.
+
+//Materias must be deleted when a Character is destroyed.
