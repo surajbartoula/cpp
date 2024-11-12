@@ -6,13 +6,15 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:24:39 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/07 13:24:41 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:51:55 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include <cstdlib>
+#include <ctime>
 
 int main() {
 	// ANSI escape codes for color

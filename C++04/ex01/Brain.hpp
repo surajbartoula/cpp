@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:32:47 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/07 11:19:13 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:47:35 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
+#include <cstdlib>
 
 class Brain {
 private:
