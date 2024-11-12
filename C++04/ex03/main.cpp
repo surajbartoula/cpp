@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:35:16 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/11 14:55:27 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:06:28 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main() {
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	ICharacter *bob = new Character("bob");
+	ICharacter *bob = new Character("bob"); 
 
 	me->use(0, *bob);
 	me->use(1, *bob);
@@ -43,3 +43,12 @@ int main() {
 //mechanism called the virtual table (vtable) to look up and call the correct overridden function at runtime.
 
 //Materias must be deleted when a Character is destroyed.
+
+
+//OWNERSHIP TRANSFER
+//When new Ice() and new Cure() are passed to src->learnMateria(), the
+//MateriaSource instance takes ownership of these objects. This means
+//MateriaSource will be responsible for deleting them when necessary
+//(e.g., during destruction or when learning new Materia and replacing existing ones).
+//When me and src are deleted at the end of main, their destructors ensure 
+//that all AMateria objects they manage are properly deleted to avoid memory leaks.
