@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:08:15 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/10 15:57:36 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/12 23:15:59 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,10 @@ public:
 };
 
 #endif
+
+//you do not need to create a .cpp file for IMateriaSource.hpp. This is an interface class, 
+//which means it only declares pure virtual functions without providing any implementation.
+
+//When to Create a .cpp File:
+//If your class had methods with actual implementations (even default methods), you would put those in a .cpp file.
+//For interface classes (pure abstract classes) like IMateriaSource, where you only need to declare the interface, a header file alone is sufficient.
