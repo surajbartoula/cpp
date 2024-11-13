@@ -6,14 +6,14 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:06 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/05 23:43:21 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:37:46 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 Dog::Dog(void) {
-	std::cout << "Default Dog constructor called" << std::endl;
+	std::cout << "Dog constructor called" << std::endl;
 	type = "Dog";
 }
 

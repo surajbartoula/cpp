@@ -6,14 +6,14 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:30:03 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/06 10:24:41 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:37:39 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 Cat::Cat(void) {
-	std::cout << "Cat default constructor called" << std::endl;
+	std::cout << "Cat constructor called" << std::endl;
 	type = "Cat";
 }
 

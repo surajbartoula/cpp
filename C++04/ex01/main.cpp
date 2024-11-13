@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:55:12 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/12 18:49:26 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/13 20:02:37 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,36 @@
 #include <ctime>
 
 int main() {
-	// ANSI escape codes for color
-    const std::string reset = "\033[0m";         // Reset to default
-    const std::string red_text = "\033[31m";     // Red text color
-    const std::string green_bg = "\033[42m";     // Green background color
-	std::cout << green_bg << red_text << "--- Testing Deep Copy ---" << reset << std::endl;
-	Dog *dog = new Dog();
-	Cat *cat = new Cat();
+	const int numAnimals = 10;
+	Animal *animals[numAnimals];
 
-	dog->makeSound();
-	cat->makeSound();
+	for (int i = 0; i < numAnimals / 2; ++i)
+		animals[i] = new Dog();
+	for (int i = numAnimals / 2; i < numAnimals; ++i)
+		animals[i] = new Cat();
+	for (int i = 0; i < numAnimals; ++i)
+		animals[i]->makeSound();
+	for (int i = 0; i < numAnimals; ++i)
+		delete animals[i];
+
 	srand(time(0));
-	std::cout << green_bg << red_text << "--- Printing dog ideas ---" << reset << std::endl;
-	dog->printidea();
-	std::cout << green_bg << red_text << "--------------------------" << reset << std::endl;
-	Dog dog1 = *dog;
-	Dog dog2 = dog1;
-	delete dog;
-	std::cout << green_bg << red_text << "--- Printing dog1 ideas ---" << reset << std::endl;
-	dog1.printidea();
-	std::cout << green_bg << red_text << "--- Printing dog2 ideas ---" << reset << std::endl;
-	dog2.printidea();
-	std::cout << green_bg << red_text << "--- Printing cat ideas ---" << reset << std::endl;
-	cat->printidea();
-	delete cat;
+	const Dog *lucky = new Dog();
+	const Cat *ashley = new Cat();
 
+	lucky->makeSound();
+	ashley->makeSound();
+	std::cout << "Lucky idea printed:" << std::endl;
+	lucky->printidea();
+	const Dog lucky1 = *lucky;
+	delete lucky;
+	Dog lucky2 = lucky1;
+	std::cout << "Lucky1 idea printed:" << std::endl;
+	lucky1.printidea();
+	std::cout << "Lucky2 idea printed:" << std::endl;
+	lucky2.printidea();
+	std::cout << "ashley idea printed:" << std::endl;
+	ashley->printidea();
+	delete ashley;
 	return (0);
 }
 
@@ -58,3 +63,5 @@ int main() {
 //Memory management:Ensure each dynamically allocated Brain is properly freed to prevent memory leaks.
 //Deep copy:Tests that dog and cat objects aren't sharing the same Brain memory, so each copy has its own independent Brain.
 //Polymorphism: Allows us to handle Dog and Cat objects as Animal* pointers in a single array, calling the correct destructor and functions based on the actual object type(Dog or Cat).
+//By making Brain a member of Dog and Cat, the exercise demonstrates composition, where an object
+//(e.g., Dog or Cat) owns another object (e.g., Brain).

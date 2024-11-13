@@ -6,14 +6,14 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:06 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/07 11:37:01 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:37:23 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 Dog::Dog(void) : brain(new Brain) {
-	std::cout << "Default Dog constructor called" << std::endl;
+	std::cout << "Dog constructor called" << std::endl;
 	type = "Dog";
 }
 
@@ -24,12 +24,10 @@ Dog::Dog(const Dog &old) : Animal(old), brain(new Brain(*old.brain)) {
 
 Dog &Dog::operator=(const Dog &rhs) {
 	std::cout << "Dog copy assignment operator called" << std::endl;
-	if (this != &rhs)
-	{
-		Animal::operator=(rhs);
-		delete brain;
-		brain = new Brain(*rhs.brain);
-	}
+	if (this == &rhs)
+		return (*this);
+	brain = new Brain(*rhs.brain);
+	type = rhs.type;
 	return (*this);
 }
 

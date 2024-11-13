@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:29:14 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/11/07 11:38:41 by sbartoul         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:09:36 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	Dog &operator=(const Dog &rhs);
 	virtual ~Dog(void);
 
-	void makeSound(void) const;
+	void makeSound(void) const; //the method doesnot change any member variable of the class or call non-const member func that could modify the object.
 	void printidea(void) const;
 };
 
