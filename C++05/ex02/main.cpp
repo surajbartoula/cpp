@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:14:24 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/12 11:27:56 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:39:32 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,41 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-	Bureaucrat b = Bureaucrat("Francias", 137);
-	Bureaucrat f = Bureaucrat("Paris", 1);
-	ShrubberyCreationForm shrubForm("Straberry");
-	RobotomyRequestForm robotomyForm("Jarvis");
-	PresidentialPardonForm presForm("Trump");
+    Bureaucrat bureaucrat("Francias", 137);
+    Bureaucrat highRank("Paris", 1);
+    ShrubberyCreationForm shrubberyForm("Home");
+    RobotomyRequestForm robotomyForm("Bender");
+    PresidentialPardonForm presForm("Zaphod");
 
-	b.executeForm(shrubForm);
-	b.signForm(shrubForm);
-	b.executeForm(shrubForm);
+    try {
+        highRank.signForm(robotomyForm);
+        highRank.executeForm(robotomyForm);
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-	f.signForm(robotomyForm);
-	f.executeForm(robotomyForm);
+    try {
+        highRank.signForm(presForm);
+        highRank.executeForm(presForm);
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-	b.signForm(presForm);
-	b.executeForm(presForm);
+    try {
+        bureaucrat.executeForm(shrubberyForm);
+        bureaucrat.signForm(shrubberyForm);
+        bureaucrat.executeForm(shrubberyForm);
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-	f.signForm(presForm);
-	f.executeForm(presForm);
+    Bureaucrat lowRank("Jane", 150);
+    try {
+        lowRank.signForm(presForm);
+        lowRank.executeForm(shrubberyForm);
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    return 0;
 }
