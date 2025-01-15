@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:24:02 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/13 21:10:46 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:31:56 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,7 @@ private:
 };
 
 #endif
+
+// ex00: Introduction to static casting and conversion of scalar types
+// ex01: Serialization and reinterpret casting
+// ex02: Identification of real types of classes via dynamic casting

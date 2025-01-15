@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:54:53 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/13 22:43:56 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:53:54 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,3 +134,6 @@ enum ScalarConverter::LiteralType ScalarConverter::_parseFloatLiteral(const std:
 	if (containsNumbers == false)
 		return (ScalarConverter::ERROR);
 }
+
+//Pseudo-literals aren't exactly "literals" in the traditional sense(like 42 or "hello").Instead,they represent special,predefined
+//language constructs or values that behave like literals but have additional semantics or functionality tied to the language.
