@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:14:24 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/13 13:21:30 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:29:22 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Intern.hpp"
 
 int main() {
+	std::srand(static_cast<unsigned int>(std::time(0)));
 	Intern someRandomIntern;
 	AForm *rrf;
 	rrf = someRandomIntern.makeForm("robotomy request", "Bender");

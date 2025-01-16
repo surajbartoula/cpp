@@ -6,16 +6,29 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:54:53 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/16 11:19:20 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:41:00 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {}
-ScalarConverter::ScalarConverter(const ScalarConverter& old) {(void)old;}
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {(void)rhs; return (*this);}
-ScalarConverter::~ScalarConverter() {}
+ScalarConverter::ScalarConverter() {
+	std::cout << "Default constructor called." << std::endl;
+}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& old) {
+	std::cout << "Copy constructor called." << std::endl;
+	(void)old;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
+	std::cout << "Copy assignment operator called." << std::endl;
+	(void)rhs;
+	return (*this);
+}
+ScalarConverter::~ScalarConverter() {
+	std::cout << "Destructor called." << std::endl;
+}
 
 bool ScalarConverter::isChar(const std::string& input) {
 	return input.length() == 1 && std::isprint(input[0]) && !std::isdigit(input[0]);
@@ -117,10 +130,14 @@ void ScalarConverter::printFloat(const std::string& input) {
 	}
 	if (count > 1) {		
 		std::ostringstream oss;
+		//Without std::fixed, 12345.6789 could be displayed as 1.234568e+04 in scientific notation.
+		// setprecision specifies how many digits should be displayed after the decimal point.
 		oss << std::fixed << std::setprecision(15) << value;
+		//retrieves the string from the ostringstream (oss) which contains the formatted floating-point value
 		std::string str = oss.str();
 		size_t dotPos = str.find('.');
 		if (dotPos != std::string::npos) {
+			//find the position where the last character in the string is not character '0'
 			size_t lastNonZero = str.find_last_not_of('0');
 			if (lastNonZero != std::string::npos && lastNonZero > dotPos)
 				str.erase(lastNonZero + 1);

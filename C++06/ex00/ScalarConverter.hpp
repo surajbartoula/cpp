@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:24:02 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/16 10:57:40 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:03:46 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include <sstream>
 
 class ScalarConverter {
-public:
 private:
 	ScalarConverter(void);
 	ScalarConverter(const ScalarConverter& old);
