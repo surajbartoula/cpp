@@ -6,134 +6,229 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:54:53 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/14 17:53:54 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:19:20 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(void)
-: _inputType(ScalarConverter::INT), _rawString("") {
-	std::cout << "Default constructor called" << std::endl;
+ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter(const ScalarConverter& old) {(void)old;}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {(void)rhs; return (*this);}
+ScalarConverter::~ScalarConverter() {}
+
+bool ScalarConverter::isChar(const std::string& input) {
+	return input.length() == 1 && std::isprint(input[0]) && !std::isdigit(input[0]);
+	//isprint and isdigit are designed to work on a single character, not on an entire string.
 }
 
-ScalarConverter::ScalarConverter(const std::string& rawString)
-: _rawString(rawString) {
-	_inputType = _getLiteralType(rawString);
-	std::cout << "Literal Type: ";
-	switch (_inputType)
-	{
-	case ScalarConverter::CHAR_NORMAL:
-		std::cout << "Normal char literal" << std::endl;
-		break;
-	case ScalarConverter::CHAR_ESCAPE:
-		std::cout << "Escape char literal" << std::endl;
-		break;
-	case ScalarConverter::CHAR_HEXA:
-		std::cout << "Hexadecimal char literal" << std::endl;
-		break;
-	case ScalarConverter::CHAR_OCTAL:
-		std::cout << "Octal char literal" << std::endl;
-		break;
-	case ScalarConverter::INT:
-		std::cout << "Int literal" << std::endl;
-		break;
-	case ScalarConverter::FLOAT:
-		std::cout << "Float literal" << std::endl;
-		break;
-	case ScalarConverter::FLOAT_PSEUDO:
-		std::cout << "Float pseudo literal" << std::endl;
-		break;
-	case ScalarConverter::DOUBLE:
-		std::cout << "Double literal" << std::endl;
-		break;
-	case ScalarConverter::DOUBLE_PSEUDO:
-		std::cout << "Double pseudo literal" << std::endl;
-		break;
-	default:
-		throw std::invalid_argument("Invalid input");
-		break;
+bool ScalarConverter::isInt(const std::string& input) {
+    char *end;
+    long int value = std::strtol(input.c_str(), &end, 10); //strtol converts string to a long int.
+	//long int strtol(const char* str, char** endptr, int base);
+    return *end == '\0' && value >= std::numeric_limits<int>::min() && value <= std::numeric_limits<int>::max();
+}
+
+bool ScalarConverter::isFloat(const std::string& input) {
+    char *end;
+    std::strtof(input.c_str(), &end);
+	//float std::strtof(const char* str, char** endptr);
+    return *end == 'f' && *(end + 1) == '\0';
+}
+
+bool ScalarConverter::isDouble(const std::string& input) {
+    char *end;
+    std::strtod(input.c_str(), &end);
+	//double std::strtod(const char* str, char** endptr);
+    return *end == '\0';
+}
+
+void ScalarConverter::printChar(const std::string& input) {
+    char c = input[0];
+
+    std::cout << "char: " << c << "\n"
+              << "int: " << static_cast<int>(c) << "\n"
+              << "float: " << static_cast<float>(c) << ".0f\n"
+              << "double: " << static_cast<double>(c) << ".0\n";
+}
+
+void ScalarConverter::printInt(const std::string& input) {
+    long int value = std::strtol(input.c_str(), NULL, 10);
+
+    if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max())
+    {
+        std::cout << "char: impossible\n"
+                  << "int: impossible\n"
+                  << "float: impossible\n"
+                  << "double: impossible\n";
+        return;
+    }
+	//Safe to convert form long int to int because already verified that it's within the valid int range
+    int intValue = static_cast<int>(value);
+    char charValue = static_cast<char>(intValue);
+
+    if (intValue < 32 || intValue > 126)
+        std::cout << "char: Non displayable\n";
+    else
+        std::cout << "char: " << charValue << "\n";
+
+    std::cout << "int: " << intValue << "\n"
+              << "float: " << static_cast<float>(intValue) << ".0f\n"
+              << "double: " << static_cast<double>(intValue) << ".0\n";
+}
+
+void ScalarConverter::printFloat(const std::string& input) {
+    float value = std::strtof(input.c_str(), NULL);
+	//errno is a global variable that is used to indicate error conditions
+	//If the conversion fails, std::strtof sets errno to ERANGE,
+	//ERANGE: Result out of range (e.g., when a number is too large to fit into the requested type).
+    if (errno == ERANGE)
+    {
+        std::cout << "char: impossible\n"
+                  << "int: impossible\n"
+                  << "float: impossible\n"
+                  << "double: impossible\n";
+        return;
+    }
+
+    int intValue = static_cast<int>(value);
+    char charValue = static_cast<char>(intValue);
+
+    if (std::isnan(value) || std::isinf(value))
+    {
+        std::cout << "char: impossible\n"
+                  << "int: impossible\n";
+    }
+    else
+    {
+        if (intValue < 32 || intValue > 126)
+            std::cout << "char: Non displayable\n";
+        else
+            std::cout << "char: " << charValue << "\n";
+
+        std::cout << "int: " << intValue << "\n";
+    }
+	float fractionalPart = value - static_cast<int>(value);
+	int count = 0;
+	while (fractionalPart != 0 && count < 15) {
+		fractionalPart *= 10;
+		fractionalPart -= static_cast<int>(fractionalPart);
+		count++;
 	}
-}
-
-ScalarConverter::ScalarConverter(const ScalarConverter& old)
-: _inputType(old._inputType), _rawString(old._rawString) {
-	std::cout << "Copy constructor called" << std::endl;
-}
-
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter& rhs) {
-	if (this == &rhs)
-		return (*this);
-	_inputType = rhs._inputType;
-	_rawString = rhs._rawString;
-	return (*this);
-}
-
-enum ScalarConverter::LiteralType ScalarConverter::_getLiteralType(const std::string& str) {
-	if (str[0] == '\'' && str[str.size() - 1] == '\'' && str.size() > 2)
-		return (_parseCharLiteral(str));
-	if (str.find('.') == std::string::npos && str.find('f') == std::string::npos && str != "nan")
-		return (_parseIntLiteral(str));
-	//inf->Infinity, nan->Not a number.
-	if (str == "-inff" || str == "+inff" || str == "nan" || 
-		(str.find("f") != std::string::npos && str != "-inf" && str != "+inf" && str != "nan"))
-	{
-		return (_parseFloatLiteral(str));
-	}
-	if (str == "-inf" || str == "+inf" || str == "nan" || (str.find(".") != std::string::npos))
-		return (_parseDoubleLiteral(str));
-	return (ScalarConverter::ERROR);
-}
-
-enum ScalarConverter::LiteralType ScalarConverter::_parseDoubleLiteral(const std::string& str) {
-	if (str == "-inf" || str == "+inf" || str == "nan")
-		return (ScalarConverter::DOUBLE_PSEUDO);
-	for (size_t i = 0; i < str.size(); i++)
-	{
-		if (str[i] != '+' && str[i] != '-' && _isDigit(str[i]) == false && str[i] != '.')
-			return (ScalarConverter::ERROR);
-	}
-	bool containsNumbers = false;
-	for (size_t i = 0; i < str.size(); i++)
-	{
-		if (_isDigit(str[i] == true))
-			containsNumbers = true;
-	}
-	if (containsNumbers == false)
-		return (ScalarConverter::ERROR);
-	size_t dotCount = 0;
-	size_t signCount = 0;
-	for (size_t i = 0; i < str.size(); i++) {
-		if (str[i] == '.')
-			dotCount++;
-		if (str[i] == '+' || str[i] == '-')
-			signCount++;
-		if (dotCount > 1 || signCount > 1)
-			return (ScalarConverter::ERROR);
-	}
-	return (ScalarConverter::DOUBLE);
-}
-
-enum ScalarConverter::LiteralType ScalarConverter::_parseFloatLiteral(const std::string& str) {
-	if (str == "-inff" || str == "+inff" || str == "nanf")
-		return (ScalarConverter::FLOAT_PSEUDO);
-	for (size_t i = 0; i < str.size(); i++)
-	{
-		if (str[i] != '+' && str[i] != '-' && _isDigit(str[i]) == false &&
-			str[i] != 'f' && str[i] != '.')
-		{
-			return (ScalarConverter::ERROR);
+	if (count > 1) {		
+		std::ostringstream oss;
+		oss << std::fixed << std::setprecision(15) << value;
+		std::string str = oss.str();
+		size_t dotPos = str.find('.');
+		if (dotPos != std::string::npos) {
+			size_t lastNonZero = str.find_last_not_of('0');
+			if (lastNonZero != std::string::npos && lastNonZero > dotPos)
+				str.erase(lastNonZero + 1);
+			else
+				str.erase(dotPos + 2);
 		}
+		std::cout << "float: " << value << "f\n"
+					<< "double: " << static_cast<double>(value) << "\n";
 	}
-	bool containsNumbers = false;
-	for (size_t i = 0; i < str.size(); i++)
-	{
-		if (_isDigit(str[i]) == true)
-			containsNumbers = true;
+	else {
+		std::cout << std::fixed << std::setprecision(1)
+				  << "float: " << value << "f\n"
+				  << "double: " << static_cast<double>(value) << "\n";
 	}
-	if (containsNumbers == false)
-		return (ScalarConverter::ERROR);
 }
 
-//Pseudo-literals aren't exactly "literals" in the traditional sense(like 42 or "hello").Instead,they represent special,predefined
-//language constructs or values that behave like literals but have additional semantics or functionality tied to the language.
+void ScalarConverter::printDouble(const std::string& input) {
+    double value = std::strtod(input.c_str(), NULL);
+
+    if (errno == ERANGE)
+    {
+        std::cout << "char: impossible\n"
+                  << "int: impossible\n"
+                  << "float: impossible\n"
+                  << "double: impossible\n";
+        return;
+    }
+
+    int intValue = static_cast<int>(value);
+    char charValue = static_cast<char>(intValue);
+
+    if (std::isnan(value) || std::isinf(value))
+    {
+        std::cout << "char: impossible\n"
+                  << "int: impossible\n";
+    }
+    else
+    {
+        if (intValue < 32 || intValue > 126)
+            std::cout << "char: Non displayable\n";
+        else
+            std::cout << "char: " << charValue << "\n";
+
+        std::cout << "int: " << intValue << "\n";
+    }
+	double fractionalPart = value - static_cast<int>(value);
+	int count = 0;
+	while (fractionalPart != 0 && count < 15) {
+		fractionalPart *= 10;
+		fractionalPart -= static_cast<int>(fractionalPart);
+		count++;
+	}
+	if (count > 1)
+	{
+		std::ostringstream oss;
+		oss << std::fixed << std::setprecision(15) << value;
+		std::string str = oss.str();
+		size_t dotPos = str.find('.');
+		if (dotPos != std::string::npos) {
+			size_t lastNonZero = str.find_last_not_of('0');
+			if (lastNonZero != std::string::npos && lastNonZero > dotPos)
+				str.erase(lastNonZero + 1);
+			else
+				str.erase(dotPos + 2);
+		}
+		std::cout << "float: " << static_cast<float>(value) << "f\n"
+				<< "double: " << value << "\n";
+	}
+	else
+	{
+		std::cout << std::fixed << std::setprecision(1)
+        		  << "float: " << static_cast<float>(value) << "f\n"
+            	  << "double: " << value << "\n";
+	}
+}
+
+void ScalarConverter::convert(const std::string& input) {
+	if (isChar(input))
+		printChar(input);
+	else if (isInt(input))
+		printInt(input);
+	else if (isFloat(input))
+		printFloat(input);
+	else if (isDouble(input))
+		printDouble(input);
+	else if (input == "-inff" || input == "+inff" || input == "nanf")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << input << std::endl;
+		std::cout << "double: " << input.substr(0, input.size() - 1) << std::endl;
+	}
+	else if (input == "-inf" || input == "+inf" || input == "nan")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << input + 'f' << std::endl;
+		std::cout << "double: " << input << std::endl;
+	}
+	else {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return;
+	}
+}
+
+//Pseudo-literals aren't exactly "literals" in the traditional sense(like 42 or "hello")
+//.Instead,they represent special,predefined language constructs or values that behave 
+//like literals but have additional semantics or functionality tied to the language.

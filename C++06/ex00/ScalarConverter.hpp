@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:24:02 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/15 10:31:56 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:57:40 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,31 @@
 
 #include <iostream>
 #include <limits>
-#include <sstream>
-#include <stdexcept>
 #include <string>
+#include <iomanip>
+#include <cstdlib>
+#include <sstream>
 
 class ScalarConverter {
 public:
+private:
 	ScalarConverter(void);
-	ScalarConverter(const std::string& str);
 	ScalarConverter(const ScalarConverter& old);
 	ScalarConverter& operator=(const ScalarConverter& rhs);
 	~ScalarConverter(void);
 
-	enum LiteralType {
-		CHAR_NORMAL,
-		CHAR_ESCAPE,
-		CHAR_HEXA,
-		CHAR_OCTAL,
-		INT,
-		FLOAT,
-		FLOAT_PSEUDO,
-		DOUBLE,
-		DOUBLE_PSEUDO,
-		ERROR
-	};
+	static bool isChar(const std::string& input);
+	static bool isInt(const std::string& input);
+	static bool isFloat(const std::string& input);
+	static bool isDouble(const std::string& input);
 
-	class NonDisplayableCharacterException: public std::exception {
-		const char *what() const throw();
-	};
+	static void printChar(const std::string& input);
+	static void printInt(const std::string& input);
+	static void printFloat(const std::string& input);
+	static void printDouble(const std::string& input);
 
-	class ImpossibleConversionException: public std::exception {
-		const char *what() const throw();
-	};
-
-	char getChar(void);
-	int	getInt(void);
-	float getFloat(void);
-	double getDouble(void);
-private:
-	std::string _rawString;
-	enum LiteralType _getLiteralType(const std::string& str);
-	enum LiteralType _parseCharLiteral(const std::string& str);
-	enum LiteralType _parseIntLiteral(const std::string& str);
-	enum LiteralType _parseFloatLiteral(const std::string& str);
-	enum LiteralType _parseDoubleLiteral(const std::string& str);
-	enum LiteralType _inputType;
-	bool _isDigit(const char ch);
+public:
+	static void convert(const std::string& input);
 };
 
 #endif
