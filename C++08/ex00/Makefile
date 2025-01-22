@@ -6,11 +6,11 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 11:01:49 by sbartoul          #+#    #+#              #
-#    Updated: 2025/01/21 11:01:51 by sbartoul         ###   ########.fr        #
+#    Updated: 2025/01/22 11:10:21 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = array
+NAME = easyfind
 
 SRC = main.cpp
 

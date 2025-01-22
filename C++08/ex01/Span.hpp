@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:07:52 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/21 22:31:17 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:17:50 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ public:
 	Span(unsigned int n);
 	Span(const Span &old);
 	Span &operator=(const Span &rhs);
+	~Span(void);
 
+	//Adds a single number to the _nums vector
 	void addNumber(unsigned int num);
+	//Adds a range of numbers to the _nums vector using iterators (first, last).
 	template<typename InputIt>
 	void addNumber(InputIt first, InputIt last);
 	unsigned int shortestSpan(void);
 	unsigned int longestSpan(void);
-	~Span(void);
 };
 
 template<typename InputIt>

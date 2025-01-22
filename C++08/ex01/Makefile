@@ -6,11 +6,11 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 11:02:10 by sbartoul          #+#    #+#              #
-#    Updated: 2025/01/21 22:16:41 by sbartoul         ###   ########.fr        #
+#    Updated: 2025/01/22 11:10:35 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = array
+NAME = span
 
 SRC = main.cpp Span.cpp
 

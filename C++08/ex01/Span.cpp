@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:34:39 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/21 21:54:01 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:52:03 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,5 @@ unsigned int Span::longestSpan(void) {
 	}
 	return (*(_nums.end() - 1) - *_nums.begin());
 }
+
+//Return value of std::min_element if the range is empty, it returns last.
