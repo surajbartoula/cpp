@@ -6,12 +6,13 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:34:39 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/22 10:52:03 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:18:00 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
+//Default-initialization for a std::vector constructs an empty vector with no elements.
 Span::Span(void): _nums(), _maxNums(10), _isSorted(true) {}
 Span::Span(unsigned int n): _nums(), _maxNums(n), _isSorted(true) {}
 Span::Span(const Span &old)
@@ -63,5 +64,6 @@ unsigned int Span::longestSpan(void) {
 	}
 	return (*(_nums.end() - 1) - *_nums.begin());
 }
-
+//The std::min_element function is part of the C++ Standard Library and is used to find the smallest element
+//in a range. It returns an iterator pointing to the smallest element.
 //Return value of std::min_element if the range is empty, it returns last.

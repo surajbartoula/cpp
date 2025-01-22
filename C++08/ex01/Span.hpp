@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:07:52 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/22 10:17:50 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:12:10 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ public:
 
 template<typename InputIt>
 void Span::addNumber(InputIt first, InputIt last) {
+	//Calculates the number of elements between two iterators.
+	//the range we are going to merge with the current _nums vector of class span shouldnot exceed _maxNums
 	if (std::distance(first, last) + _nums.size() > _maxNums)
 		throw std::length_error("Span is full");
 	for (InputIt it = first; it != last; it++)
