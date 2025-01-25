@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 19:44:27 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/23 22:44:50 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/24 21:40:20 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int main(int argc, char **argv) {
 		std::cerr << "Error: could not open file.";
 		return 1;
 	}
-	std::ifstream file(argv[1]);
-	if (!file) {
-		std::cerr << "Erro: could not open file.";
+	try {
+		BitcoinExchange btc("data.csv");
+		processInputFile(argv[1], btc);
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
 		return 1;
 	}
+	return 0;
 }

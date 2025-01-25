@@ -6,13 +6,13 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 11:02:17 by sbartoul          #+#    #+#              #
-#    Updated: 2025/01/23 17:16:29 by sbartoul         ###   ########.fr        #
+#    Updated: 2025/01/24 21:58:33 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 
-SRC = main.cpp
+SRC = main.cpp BitcoinExchange.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
