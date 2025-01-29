@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 19:44:55 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/24 21:49:20 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:53:34 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 class BitcoinExchange {
 private:
 	std::map<std::string, double> _data;
-	bool isValidDate(const std::string& date) const;
 	std::string findClosestDate(const std::string& date) const;
 public:
 	BitcoinExchange(void);
@@ -33,6 +32,7 @@ public:
 	BitcoinExchange(const BitcoinExchange& old);
 	BitcoinExchange& operator=(const BitcoinExchange& rhs);
 	~BitcoinExchange();
+	bool isValidDate(const std::string& date) const;
 	double getPriceForDate(const std::string& date) const;
 };
 

@@ -5,23 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 19:44:27 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/25 19:09:09 by sbartoul         ###   ########.fr       */
+/*   Created: 2025/01/25 19:27:52 by sbartoul          #+#    #+#             */
+/*   Updated: 2025/01/26 16:19:44 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchane.hpp"
+#include "RPN.hpp"
 
 int main(int argc, char **argv) {
 	if (argc != 2) {
-		std::cerr << "Error: could not open file.";
+		std::cerr << "Error: Invalid number of arguments" << std::endl;
 		return 1;
 	}
 	try {
-		BitcoinExchange btc("data.csv");
-		processInputFile(argv[1], btc);
+		RPN rpn(argv[1]);
+		int result = rpn.evaluate();
+		std::cout << result << std::endl;
 	} catch (const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;
 	}
 	return 0;

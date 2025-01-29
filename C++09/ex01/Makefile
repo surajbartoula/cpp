@@ -6,13 +6,13 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 17:15:56 by sbartoul          #+#    #+#              #
-#    Updated: 2025/01/23 17:15:58 by sbartoul         ###   ########.fr        #
+#    Updated: 2025/01/25 18:09:01 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = abomination
+NAME = RPN
 
-SRC = main.cpp
+SRC = main.cpp RPN.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

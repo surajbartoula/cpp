@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 19:44:44 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/25 12:41:02 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/25 19:25:27 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,14 @@ double BitcoinExchange::getPriceForDate(const std::string& date) const {
 	std::string closestDate = findClosestDate(date);
 	if (closestDate.empty())
 		throw std::runtime_error("Error: no valid date found for " + date);
+	//map.at(key)
 	return _data.at(closestDate);
 }
 
 std::string trim(const std::string& str) {
-	size_t first = str.find_first_not_of("\t");
-	size_t last = str.find_last_not_of("\t");
-	return (first == std::string::npos || last == std::string::npos ? "" : str.substr(first, last - first + 1));
+    size_t first = str.find_first_not_of(" \t\n\r\f\v"); // Includes all whitespace characters
+    size_t last = str.find_last_not_of(" \t\n\r\f\v");
+    return (first == std::string::npos || last == std::string::npos ? "" : str.substr(first, last - first + 1));
 }
 
 void processInputFile(const std::string& inputFile, const BitcoinExchange& btc) {
@@ -114,6 +115,10 @@ void processInputFile(const std::string& inputFile, const BitcoinExchange& btc) 
 			valueStr = trim(valueStr);
 			if (date.find("date") != std::string::npos)
 				continue;
+			if (btc.isValidDate(date) == false) {
+				std::cerr << "Error: bad input => " << date << std::endl;
+				continue;
+			}
 			double value;
 			try {
 				char* endPtr;
