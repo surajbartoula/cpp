@@ -6,13 +6,13 @@
 #    By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 17:16:03 by sbartoul          #+#    #+#              #
-#    Updated: 2025/01/26 16:24:25 by sbartoul         ###   ########.fr        #
+#    Updated: 2025/01/30 21:34:18 by sbartoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
