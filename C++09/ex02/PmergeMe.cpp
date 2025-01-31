@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:26:29 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/30 21:34:50 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/01 00:37:30 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ long jacobsthal_numbers(long n) {
 	return jacobsthal_numbers(n - 1) + 2 * jacobsthal_numbers(n - 2);
 }
 
-void PmergeMe::sort_vec(std::vector<int>& vec) {_merge_insertion_sort<std::vector<int> >(vec, 1);}
+void PmergeMe::sort_vec(std::vector<int>& vec) {merge_insertion_sort<std::vector<int> >(vec, 1);}
 
-void PmergeMe::sort_deque(std::deque<int>& deque) {_merge_insertion_sort<std::deque<int> >(deque, 1);}
+void PmergeMe::sort_deque(std::deque<int>& deque) {merge_insertion_sort<std::deque<int> >(deque, 1);}

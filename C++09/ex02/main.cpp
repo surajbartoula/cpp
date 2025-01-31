@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:21:25 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/30 21:39:26 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:40:43 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
 		long nbr = strtol(argv[i], &end, 10);
 		if (nbr > INT_MAX || nbr < 0 || errno == ERANGE || *end != '\0')
 		{
-			std::cout << "Please provide positive integer sequence as argument." << std::endl;
+			std::cout << "Error: Please provide positive integer sequence as argument." << std::endl;
 			return 1;
 		}
 	}
@@ -62,19 +62,19 @@ int main(int argc, char **argv) {
 	std::vector<int> vec = argv_to_vector(argc, argv);
 	pm.sort_vec(vec);
 	std::clock_t end1 = std::clock();
-	double elapsed_vec = double(end1 - start1) / CLOCKS_PER_SEC;
+	double elapsed_vec = (double(end1 - start1) / CLOCKS_PER_SEC);
 
 	std::clock_t start2 = std::clock();
 	std::deque<int> deque = argv_to_deque(argc, argv);
 	pm.sort_deque(deque);
 	std::clock_t end2 = std::clock();
-	double elapsed_deq = double(end2 - start2) / CLOCKS_PER_SEC;
+	double elapsed_deq = (double(end2 - start2) / CLOCKS_PER_SEC);
 	print_argv(argc, argv, vec);
 	std::cout << "Time to process a range of " << vec.size()
-			<< " elements with std::vector: " << std::fixed << std::setprecision(6)
-			<< elapsed_vec << "s\n";
+			<< " elements with std::vector: " << std::fixed
+			<< elapsed_vec << " us\n";
 	std::cout << "Time to process a range of " << vec.size()
-			<< " elements with std::deque: " << std::fixed << std::setprecision(6)
-			<< elapsed_deq << "s\n";
+			<< " elements with std::deque: " << std::fixed
+			<< elapsed_deq << " us\n";
 	return 0;
 }
