@@ -21,6 +21,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <iomanip>
+#include <cstdlib>
 
 class BitcoinExchange {
 private:

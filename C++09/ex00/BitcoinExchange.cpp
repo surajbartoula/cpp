@@ -15,7 +15,7 @@
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const std::string& databaseFile) {
-	std::ifstream file(databaseFile);
+	std::ifstream file(databaseFile.c_str());
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
 	std::string line;
@@ -31,7 +31,7 @@ BitcoinExchange::BitcoinExchange(const std::string& databaseFile) {
 			if (date.find("date") != std::string::npos)
 				continue;
 			try {
-				double price = std::stod(priceStr);
+				double price = strtod(priceStr.c_str(), NULL);
 				_data[date] = price;
 			} catch(const std::invalid_argument& e) {
 				std::cout << "Invalid argument: " << e.what() << std::endl;
@@ -57,9 +57,9 @@ bool BitcoinExchange::isValidDate(const std::string& date) const {
 		return false;
 	int year, month, day;
 	try {
-		year = std::stoi(date.substr(0, 4));
-		month = std::stoi(date.substr(5, 2));
-		day = std::stoi(date.substr(8, 2));
+		year = atoi(date.substr(0, 4).c_str());
+		month = atoi(date.substr(5, 2).c_str());
+		day = atoi(date.substr(8, 2).c_str());
 	} catch (...) {
 		return false;
 	}
@@ -101,7 +101,7 @@ std::string trim(const std::string& str) {
 }
 
 void processInputFile(const std::string& inputFile, const BitcoinExchange& btc) {
-	std::ifstream file(inputFile);
+	std::ifstream file(inputFile.c_str());
 	if (!file.is_open()) {
 		std::cerr << "Error: could not open file." << std::endl;
 		return;
@@ -122,7 +122,7 @@ void processInputFile(const std::string& inputFile, const BitcoinExchange& btc) 
 			double value;
 			try {
 				char* endPtr;
-				value = std::strtod(valueStr.c_str(), &endPtr);
+				value = strtod(valueStr.c_str(), &endPtr);
 				if (*endPtr != '\0') {
 					throw std::invalid_argument("Invalid numeric value: " + valueStr);
 				}

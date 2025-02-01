@@ -46,7 +46,7 @@ int RPN::evaluate() {
 	std::string token;
 	while (iss >> token) {
 		if (isdigit(token[0]) && token.size() < 2) {
-			_stack.push(std::stoi(token));
+			_stack.push(atoi(token.c_str()));
 		} else if (isOperator(token)) {
 			if (_stack.size() < 2) throw std::runtime_error("Invalid expression");
 			int b = _stack.top(); _stack.pop();

@@ -19,6 +19,8 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
+#include <cerrno>
+#include <climits>
 
 class PmergeMe {
 private:

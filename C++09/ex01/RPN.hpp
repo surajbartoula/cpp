@@ -18,6 +18,7 @@
 #include <string>
 #include <stdexcept>
 #include <sstream>
+#include <cstdlib>
 
 class RPN {
 private:
