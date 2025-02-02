@@ -6,12 +6,23 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:21:25 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/02 13:07:36 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:42:33 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <algorithm>
+
+template <typename Iterator>
+bool issorted(Iterator begin, Iterator end) {
+	if (begin == end) return true;
+	Iterator prev = begin;
+	for (++begin; begin != end; ++begin) {
+		if (*begin < *prev)
+			return false;
+		prev = begin;
+	}
+	return true;
+}
 
 static std::vector<int> argv_to_vector(int argc, char **argv) {
 	std::vector<int> vec(argc - 1);
@@ -69,15 +80,15 @@ int main(int argc, char **argv) {
 	std::list<int> lst = argv_to_lst(argc, argv);
 	pm.sort_list(lst);
 	std::clock_t end2 = std::clock();
-	double elapsed_deq = (double(end2 - start2) / CLOCKS_PER_SEC);
-	if (!std::is_sorted(lst.begin(), lst.end()))
+	double elapsed_lst = (double(end2 - start2) / CLOCKS_PER_SEC);
+	if (!issorted(lst.begin(), lst.end()))
 		std::cout << "The list is not sorted." << std::endl;
 	print_argv(argc, argv, vec);
 	std::cout << "Time to process a range of " << vec.size()
 			<< " elements with std::vector: " << std::fixed
 			<< elapsed_vec << " us\n";
 	std::cout << "Time to process a range of " << vec.size()
-			<< " elements with std::deque: " << std::fixed
-			<< elapsed_deq << " us\n";
+			<< " elements with std::list: " << std::fixed
+			<< elapsed_lst << " us\n";
 	return 0;
 }
