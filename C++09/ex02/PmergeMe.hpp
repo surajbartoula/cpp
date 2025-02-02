@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:26:25 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/01 00:55:20 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:54:44 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define PMERGEME_HPP
 
 #include <algorithm>
-#include <deque>
+#include <list>
 #include <vector>
 #include <iostream>
 #include <ctime>
@@ -42,7 +42,7 @@ public:
 	~PmergeMe();
 
 	void sort_vec(std::vector<int>& vec);
-	void sort_deque(std::deque<int>& deque);
+	void sort_list(std::list<int>& lst);
 };
 
 long jacobsthal_numbers(long n);

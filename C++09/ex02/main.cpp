@@ -6,11 +6,12 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:21:25 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/31 10:40:43 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/02 13:07:36 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <algorithm>
 
 static std::vector<int> argv_to_vector(int argc, char **argv) {
 	std::vector<int> vec(argc - 1);
@@ -21,13 +22,13 @@ static std::vector<int> argv_to_vector(int argc, char **argv) {
 	return vec;
 }
 
-static std::deque<int> argv_to_deque(int argc, char **argv) {
-	std::deque<int> deque(argc - 1);
+static std::list<int> argv_to_lst(int argc, char **argv) {
+	std::list<int> lst;
 	for (int i = 1; i < argc; i++) {
 		long nbr = strtol(argv[i], NULL, 10);
-		deque[i - 1] = static_cast<int>(nbr);
+		lst.push_back(static_cast<int>(nbr));
 	}
-	return deque;
+	return lst;
 }
 
 static void print_argv(int argc, char **argv, const std::vector<int>& vec) {
@@ -65,10 +66,12 @@ int main(int argc, char **argv) {
 	double elapsed_vec = (double(end1 - start1) / CLOCKS_PER_SEC);
 
 	std::clock_t start2 = std::clock();
-	std::deque<int> deque = argv_to_deque(argc, argv);
-	pm.sort_deque(deque);
+	std::list<int> lst = argv_to_lst(argc, argv);
+	pm.sort_list(lst);
 	std::clock_t end2 = std::clock();
 	double elapsed_deq = (double(end2 - start2) / CLOCKS_PER_SEC);
+	if (!std::is_sorted(lst.begin(), lst.end()))
+		std::cout << "The list is not sorted." << std::endl;
 	print_argv(argc, argv, vec);
 	std::cout << "Time to process a range of " << vec.size()
 			<< " elements with std::vector: " << std::fixed

@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:26:29 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/01 00:55:42 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:54:53 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,4 @@ void PmergeMe::merge_insertion_sort(T& container, int order) {
 
 void PmergeMe::sort_vec(std::vector<int>& vec) {merge_insertion_sort<std::vector<int> >(vec, 1);}
 
-void PmergeMe::sort_deque(std::deque<int>& deque) {merge_insertion_sort<std::deque<int> >(deque, 1);}
+void PmergeMe::sort_list(std::list<int>& lst) {merge_insertion_sort<std::list<int> >(lst, 1);}
