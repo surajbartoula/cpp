@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:21:25 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/02 14:42:33 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/02 23:00:54 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 	{
 		char *end;
 		long nbr = strtol(argv[i], &end, 10);
-		if (nbr > INT_MAX || nbr < 0 || errno == ERANGE || *end != '\0')
+		if (nbr > INT_MAX || nbr < 0 || errno == ERANGE || *end != '\0' || end == argv[i])
 		{
 			std::cout << "Error: Please provide positive integer sequence as argument." << std::endl;
 			return 1;
