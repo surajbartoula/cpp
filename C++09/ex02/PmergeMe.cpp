@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:26:29 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/02 12:54:53 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/03 23:05:00 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ void PmergeMe::swap_adjacent_pairs(T& container, int order, typename T::iterator
 template <typename T>
 void PmergeMe::merge_insertion_sort(T& container, int order) {
 	typedef typename T::iterator it;
-	int pair_size = container.size() / order;
-	if (pair_size < 2)
+	int no_of_pair = container.size() / order;
+	if (no_of_pair < 2)
 		return;
-	bool is_odd = pair_size % 2 == 1;
-	it last = next(container.begin(), order * pair_size);
+	bool is_odd = no_of_pair % 2 == 1;
+	it last = next(container.begin(), order * no_of_pair);
 	it end = next(last, -(is_odd * order));
 	swap_adjacent_pairs(container, order, end);
 	merge_insertion_sort(container, order * 2);
@@ -103,17 +103,20 @@ void PmergeMe::merge_insertion_sort(T& container, int order) {
 	std::vector<it> pend;
 	main.insert(main.end(), next(container.begin(), order - 1));
 	main.insert(main.end(), next(container.begin(), order * 2 - 1));
-	for (int i = 4; i <= pair_size; i += 2) {
+	for (int i = 4; i <= no_of_pair; i += 2) {
 		pend.insert(pend.end(), next(container.begin(), order * (i - 1) - 1));
 		main.insert(main.end(), next(container.begin(), order * i - 1));
 	}
 	insert_with_jacobsthal<T>(main, pend);
+	//Insert the remaining elements in sequential order.
+	//to make less comparision we calculate the starting bound to be same as pend b if pend is b8, main is a8
 	for (size_t i = 0; i < pend.size(); i++) {
 		typename std::vector<it>::iterator curr_pend = next(pend.begin(), i);
 		typename std::vector<it>::iterator curr_bound = next(main.begin(), main.size() - pend.size() + i);
 		typename std::vector<it>::iterator idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, compare<it>);
 		main.insert(idx, *curr_pend);
 	}
+	//Insert odd number to main.
 	if (is_odd) {
 		typename T::iterator odd_pair = next(end, order - 1);
 		typename std::vector<it>::iterator idx = std::upper_bound(main.begin(), main.end(), odd_pair, compare<it>);
