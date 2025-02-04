@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:26:29 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/03 23:05:00 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:20:38 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ PmergeMe::PmergeMe(void) {};
 PmergeMe::PmergeMe(const PmergeMe& old) {(void)old;}
 PmergeMe& PmergeMe::operator=(const PmergeMe &rhs) {(void)rhs; return (*this);}
 PmergeMe::~PmergeMe() {};
+
+void PmergeMe::fill(int argc, char **argv) {
+	for (int i = 1; i < argc; i++) {
+		long nbr = strtol(argv[i], NULL, 10);
+		vec.push_back(static_cast<int>(nbr));
+		lst.push_back(static_cast<int>(nbr));
+	}
+}
 
 //Jacobsthal numbers are J(0)=0, J(1)=1, J(2)=1, J(3)=3, J(4)=5, J(5)=11, J(6)=21,..
 long jacobsthal_numbers(long n) {
@@ -89,11 +97,11 @@ void PmergeMe::swap_adjacent_pairs(T& container, int order, typename T::iterator
 }
 
 template <typename T>
-void PmergeMe::merge_insertion_sort(T& container, int order) {
+T& PmergeMe::merge_insertion_sort(T& container, int order) {
 	typedef typename T::iterator it;
 	int no_of_pair = container.size() / order;
 	if (no_of_pair < 2)
-		return;
+		return container;
 	bool is_odd = no_of_pair % 2 == 1;
 	it last = next(container.begin(), order * no_of_pair);
 	it end = next(last, -(is_odd * order));
@@ -138,8 +146,48 @@ void PmergeMe::merge_insertion_sort(T& container, int order) {
 		container_it++;
 		itr++;
 	}
+	return container;
 }
 
-void PmergeMe::sort_vec(std::vector<int>& vec) {merge_insertion_sort<std::vector<int> >(vec, 1);}
+void PmergeMe::print_argv(const std::vector<int>& vec) {
+	for (std::vector<int>::size_type i = 0; i < vec.size(); ++i) {
+		std::cout << vec[i] << " ";
+	}
+	std::cout << std::endl;
+}
 
-void PmergeMe::sort_list(std::list<int>& lst) {merge_insertion_sort<std::list<int> >(lst, 1);}
+template <typename Iterator>
+bool issorted(Iterator begin, Iterator end) {
+	if (begin == end) return true;
+	Iterator prev = begin;
+	for (++begin; begin != end; ++begin) {
+		if (*begin < *prev)
+			return false;
+		prev = begin;
+	}
+	return true;
+}
+
+void PmergeMe::sort() {
+	std::cout << "Before: ";
+	print_argv(vec);
+	std::cout << "After: ";
+	std::clock_t start1 = std::clock();
+	vec = merge_insertion_sort(vec, 1);
+	std::clock_t end1 = std::clock();
+	double elapsed_vec = (double(end1 - start1) / CLOCKS_PER_SEC);
+
+	std::clock_t start2 = std::clock();
+	lst = merge_insertion_sort(lst, 1);
+	std::clock_t end2 = std::clock();
+	double elapsed_lst = (double(end2 - start2) / CLOCKS_PER_SEC);
+	print_argv(vec);
+	if (!issorted(lst.begin(), lst.end()))
+		std::cout << "The list is not sorted." << std::endl;
+	std::cout << "Time to process a range of " << vec.size()
+			<< " elements with std::vector: " << std::fixed
+			<< elapsed_vec << " us\n";
+	std::cout << "Time to process a range of " << vec.size()
+			<< " elements with std::list: " << std::fixed
+			<< elapsed_lst << " us\n";
+}
