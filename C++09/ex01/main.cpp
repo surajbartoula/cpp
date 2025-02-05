@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 19:27:52 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/02 22:46:22 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:23:54 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 	}
 	try {
 		RPN rpn(argv[1]);
-		int result = rpn.evaluate();
+		long long result = rpn.evaluate();
 		std::cout << result << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
