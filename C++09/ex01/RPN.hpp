@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:05:36 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/02/05 14:28:07 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:41:25 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <climits>
+#include <limits>
 
 class RPN {
 private:
